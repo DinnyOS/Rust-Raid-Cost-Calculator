@@ -5,7 +5,7 @@ sulfur_costs = {
         "cost": 1400,  # 1 Rocket + 10 Rifle Ammunition
         "additional_info": {
             "rockets": 1,
-            "rifle_ammo": 10
+            "rifle_ammunition": 10
         }
     },
     "stone_wall": {
@@ -15,29 +15,29 @@ sulfur_costs = {
         }
     },
     "sheet_metal_wall": {
-        "cost": 8400,  # 3 C4's + 75 Explosive Rifle Ammo
+        "cost": 8400,  # 3 C4's + 75 Explosive Rifle Ammunition
         "additional_info": {
             "c4": 3,
-            "explosive_rifle_ammo": 75
+            "explosive_rifle_ammunition": 75
         }
     },
     "armored_wall": {
-        "cost": 16150,  # 7 C4's + 30 Explosive Rifle Ammo
+        "cost": 16150,  # 7 C4's + 30 Explosive Rifle Ammunition
         "additional_info": {
             "c4": 7,
-            "explosive_rifle_ammo": 30
+            "explosive_rifle_ammunition": 30
         }
     },
     "wooden_door": {
-        "cost": 450,  # 18 Explosive Rifle Ammo
+        "cost": 450,  # 18 Explosive Rifle Ammunition
         "additional_info": {
-            "explosive_rifle_ammo": 18
+            "explosive_rifle_ammunition": 18
         }
     },
     "sheet_metal_door": {
-        "cost": 1600,  # 63 Explosive Rifle Ammo
+        "cost": 1600,  # 63 Explosive Rifle Ammunition
         "additional_info": {
-            "explosive_rifle_ammo": 63
+            "explosive_rifle_ammunition": 63
         }
     },
     "garage_door": {
@@ -54,10 +54,10 @@ sulfur_costs = {
         }
     },
     "armored_double_door": {
-        "cost": 5200,  # 2 C4's + 31 Explosive Rifle Ammo
+        "cost": 5200,  # 2 C4's + 31 Explosive Rifle Ammunition
         "additional_info": {
             "c4": 2,
-            "explosive_rifle_ammo": 31
+            "explosive_rifle_ammunition": 31
         }
     },
     "auto_turret": {
@@ -85,9 +85,9 @@ sulfur_costs = {
         }
     },
     "ladder_hatch": {
-        "cost": 1600,  # 63 Explosive Rifle Ammo
+        "cost": 1600,  # 63 Explosive Rifle Ammunition
         "additional_info": {
-            "explosive_rifle_ammo": 63
+            "explosive_rifle_ammunition": 63
         }
     }
 }
@@ -117,7 +117,7 @@ def options():
 
 def input_gather():
 
-    user_input = input("\n\nSelect the obstacle that you want to break using the abbreviation from above: ")
+    user_input = input("\n\nSelect the obstacle that you want to break using the abbreviation from above: ").upper()
 
     #validate input
     valid_input = ["WW", "SW", "SMW", "AW", "WD", "SMD", "GD", "AD", "ADD", "AT", "WB3", "ESW", "EMB", "LH"]
@@ -190,14 +190,19 @@ def calculate_cost(selected_obstacle, quantity, user_input):
 
         # Print the result
         print(f"\nRaid cost for {quantity} {user_input}'s is:\n{base_cost} sulfur.")
-        print("\nBreakdown of additional items:")
+        print("\nBreakdown of required items:")
         for item, amount in additional_info.items():
             print(f"{amount * quantity} {item}")
 
 
 
 def calculate():
-    options()
-    input_gather()
+    while True:
+        options()
+        input_gather()
+
+        another_calculation = input("\n\nWould you like to calculate the raid cost for another obstacle? (Y to continue)").upper()
+        if another_calculation != "Y":
+            break
 
 calculate()
