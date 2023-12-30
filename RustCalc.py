@@ -177,7 +177,7 @@ def calculate_cost(selected_obstacle, quantity, user_input):
         base_cost = selected_obstacle["cost"] * quantity
         additional_info = selected_obstacle.get("additional_info", {})
 
-        # Calculate the total cost for additional items
+        # Calculate the total amount of needed items to break the obstacle
         additional_cost = sum(additional_info[item] * quantity for item in additional_info)
 
 
