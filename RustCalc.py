@@ -1,18 +1,175 @@
 # foundation data
 
-sulfur_costs = {"wooden_wall": 1400,  # 1 Rocket + 10 Rifle Ammunition
-                "stone_wall": 5600,  # 4 Rockets
-                "sheet_metal_wall": 8400,  # 3 C4's + 75 Explosive Rifle Ammo
-                "armored_wall": 16150,  # 7 C4's + 30 Explosive Rifle Ammo
-                "wooden_door": 450,  # 18 Explosive Rifle Ammo
-                "sheet_metal_door": 1600,  # 63 Explosive Rifle Ammo
-                "garage_door": 3600,  # 1 C4 + 1 Rocket
-                "armored_door": 4400,  # 2 C4's
-                "armored_double_door": 5200,  # 2 C4's + 31 Explosive Rifle Ammo
-                "auto_turret": 600,  # 3 High Velocity Rockets
-                "workbench_3": 4400,  # 2 C4's
-                "external_stone_wall": 4400,  # 2 C4's
-                "embrasure": 5600,  # 4 Rockets
-                "ladder_hatch": 1600}  # 63 Explosive Rifle Ammo
+sulfur_costs = {
+    "wooden_wall": {
+        "cost": 1400,  # 1 Rocket + 10 Rifle Ammunition
+        "additional_info": {
+            "rockets": 1,
+            "rifle_ammo": 10
+        }
+    },
+    "stone_wall": {
+        "cost": 5600,  # 4 Rockets
+        "additional_info": {
+            "rockets": 4
+        }
+    },
+    "sheet_metal_wall": {
+        "cost": 8400,  # 3 C4's + 75 Explosive Rifle Ammo
+        "additional_info": {
+            "c4": 3,
+            "explosive_rifle_ammo": 75
+        }
+    },
+    "armored_wall": {
+        "cost": 16150,  # 7 C4's + 30 Explosive Rifle Ammo
+        "additional_info": {
+            "c4": 7,
+            "explosive_rifle_ammo": 30
+        }
+    },
+    "wooden_door": {
+        "cost": 450,  # 18 Explosive Rifle Ammo
+        "additional_info": {
+            "explosive_rifle_ammo": 18
+        }
+    },
+    "sheet_metal_door": {
+        "cost": 1600,  # 63 Explosive Rifle Ammo
+        "additional_info": {
+            "explosive_rifle_ammo": 63
+        }
+    },
+    "garage_door": {
+        "cost": 3600,  # 1 C4 + 1 Rocket
+        "additional_info": {
+            "c4": 1,
+            "rockets": 1
+        }
+    },
+    "armored_door": {
+        "cost": 4400,  # 2 C4's
+        "additional_info": {
+            "c4": 2
+        }
+    },
+    "armored_double_door": {
+        "cost": 5200,  # 2 C4's + 31 Explosive Rifle Ammo
+        "additional_info": {
+            "c4": 2,
+            "explosive_rifle_ammo": 31
+        }
+    },
+    "auto_turret": {
+        "cost": 600,  # 3 High Velocity Rockets
+        "additional_info": {
+            "high_velocity_rockets": 3
+        }
+    },
+    "workbench_3": {
+        "cost": 4400,  # 2 C4's
+        "additional_info": {
+            "c4": 2
+        }
+    },
+    "external_stone_wall": {
+        "cost": 4400,  # 2 C4's
+        "additional_info": {
+            "c4": 2
+        }
+    },
+    "embrasure": {
+        "cost": 5600,  # 4 Rockets
+        "additional_info": {
+            "rockets": 4
+        }
+    },
+    "ladder_hatch": {
+        "cost": 1600,  # 63 Explosive Rifle Ammo
+        "additional_info": {
+            "explosive_rifle_ammo": 63
+        }
+    }
+}
 
 
+# calculator mechanics
+
+def options():
+    print("Welcome to the Rust Raid Cost Calculator! \n\n")
+    print("Wooden Wall: WW\n"
+          "Stone Wall: SW\n"
+          "Sheet Metal Wall: SMW\n"
+          "Armored Wall: AW\n"
+          "Wooden Door: WD\n"
+          "Sheet Metal Door: SMD\n"
+          "Garage Door: GD \n"
+          "Armored Door: AD\n"
+          "Armored Double Door: ADD\n"
+          "Auto Turret: AT\n"
+          "Workbench 3: WB3\n"
+          "External Stone Wall: ESW\n"
+          "Embrasure: EMB\n"
+          "Ladder Hatch: LH\n")
+
+
+
+def input_gather():
+
+    user_input = input("\n\nSelect the obstacle that you want to break using the abbreviation: ")
+
+    selected_obstacle = None
+
+    match user_input:
+        case "WW":
+            selected_obstacle = sulfur_costs.get("wooden_wall")
+
+        case "SW":
+            selected_obstacle = sulfur_costs.get("stone_wall")
+
+        case "SMW":
+            selected_obstacle = sulfur_costs.get("sheet_metal_wall")
+
+        case "AW":
+            selected_obstacle = sulfur_costs.get("armored_wall")
+
+        case "WD":
+            selected_obstacle = sulfur_costs.get("wooden_door")
+
+        case "SMD":
+            selected_obstacle = sulfur_costs.get("sheet_metal_door")
+
+        case "GD":
+            selected_obstacle = sulfur_costs.get("garage_door")
+
+        case "AD":
+            selected_obstacle = sulfur_costs.get("armored_door")
+
+        case "ADD":
+            selected_obstacle = sulfur_costs.get("armored_double_door")
+
+        case "AT":
+            selected_obstacle = sulfur_costs.get("auto_turret")
+
+        case "WB3":
+            selected_obstacle = sulfur_costs.get("workbench_3")
+
+        case "ESW":
+            selected_obstacle = sulfur_costs.get("external_stone_wall")
+
+        case "EMB":
+            selected_obstacle = sulfur_costs.get("embrasure")
+
+        case "LH":
+            selected_obstacle = sulfur_costs.get("ladder_hatch")
+
+        case _:
+            selected_obstacle = None  # Invalid input, set to None
+
+
+
+def calculate():
+    options()
+    input()
+
+calculate()
