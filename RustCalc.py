@@ -164,12 +164,33 @@ def input_gather():
             selected_obstacle = sulfur_costs.get("ladder_hatch")
 
         case _:
-            selected_obstacle = None  # Invalid input, set to None
+            selected_obstacle = None  # In case of an invalid input, set to None
+
+    if selected_obstacle:
+        quantity = int(input(f"For how many {user_input}'s do you want to calculate the raid cost for: "))
+
+        calculate_cost(selected_obstacle, quantity, user_input)
+
+
+def calculate_cost(selected_obstacle, quantity, user_input):
+    if selected_obstacle:
+        base_cost = selected_obstacle["cost"] * quantity
+        additional_info = selected_obstacle.get("additional_info", {})
+
+        # Calculate the total cost for additional items
+        additional_cost = sum(additional_info[item] * quantity for item in additional_info)
+
+
+        # Print the result
+        print(f"\nRaid cost for {quantity} {user_input}'s is:\n{base_cost} sulfur.")
+        print("\nBreakdown of additional items:")
+        for item, amount in additional_info.items():
+            print(f"{amount * quantity} {item}")
 
 
 
 def calculate():
     options()
-    input()
+    input_gather()
 
 calculate()
