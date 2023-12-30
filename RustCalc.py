@@ -114,9 +114,16 @@ def options():
 
 
 
+
 def input_gather():
 
-    user_input = input("\n\nSelect the obstacle that you want to break using the abbreviation: ")
+    user_input = input("\n\nSelect the obstacle that you want to break using the abbreviation from above: ")
+
+    #validate input
+    valid_input = ["WW", "SW", "SMW", "AW", "WD", "SMD", "GD", "AD", "ADD", "AT", "WB3", "ESW", "EMB", "LH"]
+    while user_input not in valid_input:
+        user_input = input("An error occurred. Select the obstacle using the CORRECT abbreviation from above: ")
+
 
     selected_obstacle = None
 
