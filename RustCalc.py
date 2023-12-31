@@ -122,7 +122,7 @@ def input_gather():
     #validate input
     valid_input = ["WW", "SW", "SMW", "AW", "WD", "SMD", "GD", "AD", "ADD", "AT", "WB3", "ESW", "EMB", "LH"]
     while user_input not in valid_input:
-        user_input = input("An error occurred. Select the obstacle using the CORRECT abbreviation from above: ")
+        user_input = input("Incorrect input. Select the obstacle using the CORRECT abbreviation from above: ").upper()
 
 
     selected_obstacle = None
