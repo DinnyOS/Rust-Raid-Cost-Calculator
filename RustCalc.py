@@ -319,6 +319,7 @@ def calculate_cost(selected_obstacle, quantity, user_input):
         print("\nBreakdown of required items:")
         for item, amount in additional_info.items():
             print(f"{amount * quantity} {item}")
+            print("\nmade by @DinnyOs")
 
 
 def calculate():
@@ -327,8 +328,7 @@ def calculate():
         options()
         input_gather(mode)
 
-        another_calculation = input(
-            "\n\nWould you like to calculate the raid cost for another obstacle? (Y to continue)").upper()
+        another_calculation = input("\n\nWould you like to calculate the raid cost for another obstacle? (Y to continue)").upper()
         if another_calculation != "Y":
             break
 
