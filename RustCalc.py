@@ -78,6 +78,13 @@ sulfur_costs = {
             "c4": 2
         }
     },
+    "external_wooden_wall": {
+        "cost": 2800,  # 2 Rockets + 10 Explosive Rifle Ammunition
+        "additional_info": {
+            "rockets": 2,
+            "explosive_rifle_ammunition": 10
+        }
+    },
     "embrasure": {
         "cost": 5600,  # 4 Rockets
         "additional_info": {
@@ -91,6 +98,105 @@ sulfur_costs = {
         }
     }
 }
+
+rocket_costs = {
+    "wooden_wall": {
+        "cost": 1400,  # 1 Rocket + 10 Rifle Ammunition
+        "additional_info": {
+            "rockets": 1,
+            "rifle_ammunition": 10
+        }
+    },
+    "stone_wall": {
+        "cost": 5600,  # 4 Rockets
+        "additional_info": {
+            "rockets": 4
+        }
+    },
+    "sheet_metal_wall": {
+        "cost": 11200,  # 8 Rockets
+        "additional_info": {
+            "rockets": 8
+        }
+    },
+    "armored_wall": {
+        "cost": 21000,  # 15 Rockets
+        "additional_info": {
+            "rockets": 15
+        }
+    },
+    "wooden_door": {
+        "cost": 1400,  # 1 Rocket
+        "additional_info": {
+            "rockets": 1
+        }
+    },
+    "sheet_metal_door": {
+        "cost": 2800,  # 2 Rocket
+        "additional_info": {
+            "rockets": 2
+        }
+    },
+    "garage_door": {
+        "cost": 4200,  # 3 Rockets
+        "additional_info": {
+            "rockets": 3
+        }
+    },
+    "armored_door": {
+        "cost": 7000,  # 5 Rockets
+        "additional_info": {
+            "rockets": 5
+        }
+    },
+    "armored_double_door": {
+        "cost": 7000,  # 5 Rockets
+        "additional_info": {
+            "rockets": 5
+
+        }
+    },
+    "auto_turret": {
+        "cost": 600,  # 3 High Velocity Rockets
+        "additional_info": {
+            "high_velocity_rockets": 3
+        }
+    },
+    "workbench_3": {
+        "cost": 8400,  # 6 Rockets
+        "additional_info": {
+            "rockets": 6
+
+        }
+    },
+    "external_stone_wall": {
+        "cost": 5600,  # 4 Rockets
+        "additional_info": {
+            "rockets": 4
+        }
+    },
+    "external_wooden_wall": {
+        "cost": 4200,  # 3 Rockets
+        "additional_info": {
+            "rockets": 3
+        }
+    },
+    "embrasure": {
+        "cost": 5600,  # 4 Rockets
+        "additional_info": {
+            "rockets": 4
+        }
+    },
+    "ladder_hatch": {
+        "cost": 2800,  # 2 Rockets
+        "additional_info": {
+            "rockets": 2
+        }
+    }
+}
+
+
+
 
 
 # calculator mechanics
@@ -109,6 +215,7 @@ def options():
           "Auto Turret: AT\n"
           "Workbench 3: WB3\n"
           "External Stone Wall: ESW\n"
+          "External Wooden Wall: EWW\n"
           "Embrasure: EMB\n"
           "Ladder Hatch: LH\n")
 
@@ -120,7 +227,7 @@ def input_gather():
     user_input = input("\n\nSelect the obstacle that you want to break using the abbreviation from above: ").upper()
 
     #validate input
-    valid_input = ["WW", "SW", "SMW", "AW", "WD", "SMD", "GD", "AD", "ADD", "AT", "WB3", "ESW", "EMB", "LH"]
+    valid_input = ["WW", "SW", "SMW", "AW", "WD", "SMD", "GD", "AD", "ADD", "AT", "WB3", "ESW", "EMB", "LH", "EWW"]
     while user_input not in valid_input:
         user_input = input("Incorrect input. Select the obstacle using the CORRECT abbreviation from above: ").upper()
 
@@ -163,6 +270,9 @@ def input_gather():
 
         case "ESW":
             selected_obstacle = sulfur_costs.get("external_stone_wall")
+
+        case "EWW":
+            selected_obstacle = sulfur_costs.get("external_wooden_wall")
 
         case "EMB":
             selected_obstacle = sulfur_costs.get("embrasure")
