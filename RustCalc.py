@@ -202,8 +202,7 @@ rocket_costs = {
 # calculator mechanics
 
 def options():
-    print("Welcome to the Rust Raid Cost Calculator! \n\n")
-    print("Wooden Wall: WW\n"
+    print("\nWooden Wall: WW\n"
           "Stone Wall: SW\n"
           "Sheet Metal Wall: SMW\n"
           "Armored Wall: AW\n"
@@ -220,9 +219,24 @@ def options():
           "Ladder Hatch: LH\n")
 
 
+def mode_selector():
+    print("Welcome to the Rust Raid Cost Calculator! \n\n")
+    print("1: ROCKET RAID COST CALCULATOR\n2: CHEAPEST RAID COST CALCULATOR\n")
 
+    mode_select = input("Select the mode that you would like to run: ")
+    mode = None
 
-def input_gather():
+    valid_mode_input = ["1", "2"]
+    while mode_select not in valid_mode_input:
+        mode_select = input("Incorrect input. Select the mode using the CORRECT number from above: ")
+
+    if mode_select == "1":
+        mode = rocket_costs
+    else:
+        mode = sulfur_costs
+
+    return mode
+def input_gather(mode):
 
     user_input = input("\n\nSelect the obstacle that you want to break using the abbreviation from above: ").upper()
 
@@ -236,55 +250,60 @@ def input_gather():
 
     match user_input:
         case "WW":
-            selected_obstacle = sulfur_costs.get("wooden_wall")
+            selected_obstacle = mode.get("wooden_wall")
 
         case "SW":
-            selected_obstacle = sulfur_costs.get("stone_wall")
+            selected_obstacle = mode.get("stone_wall")
 
         case "SMW":
-            selected_obstacle = sulfur_costs.get("sheet_metal_wall")
+            selected_obstacle = mode.get("sheet_metal_wall")
 
         case "AW":
-            selected_obstacle = sulfur_costs.get("armored_wall")
+            selected_obstacle = mode.get("armored_wall")
 
         case "WD":
-            selected_obstacle = sulfur_costs.get("wooden_door")
+            selected_obstacle = mode.get("wooden_door")
 
         case "SMD":
-            selected_obstacle = sulfur_costs.get("sheet_metal_door")
+            selected_obstacle = mode.get("sheet_metal_door")
 
         case "GD":
-            selected_obstacle = sulfur_costs.get("garage_door")
+            selected_obstacle = mode.get("garage_door")
 
         case "AD":
-            selected_obstacle = sulfur_costs.get("armored_door")
+            selected_obstacle = mode.get("armored_door")
 
         case "ADD":
-            selected_obstacle = sulfur_costs.get("armored_double_door")
+            selected_obstacle = mode.get("armored_double_door")
 
         case "AT":
-            selected_obstacle = sulfur_costs.get("auto_turret")
+            selected_obstacle = mode.get("auto_turret")
 
         case "WB3":
-            selected_obstacle = sulfur_costs.get("workbench_3")
+            selected_obstacle = mode.get("workbench_3")
 
         case "ESW":
-            selected_obstacle = sulfur_costs.get("external_stone_wall")
+            selected_obstacle = mode.get("external_stone_wall")
 
         case "EWW":
-            selected_obstacle = sulfur_costs.get("external_wooden_wall")
+            selected_obstacle = mode.get("external_wooden_wall")
 
         case "EMB":
-            selected_obstacle = sulfur_costs.get("embrasure")
+            selected_obstacle = mode.get("embrasure")
 
         case "LH":
-            selected_obstacle = sulfur_costs.get("ladder_hatch")
+            selected_obstacle = mode.get("ladder_hatch")
 
         case _:
             selected_obstacle = None  # In case of an invalid input, set to None
 
     if selected_obstacle:
-        quantity = int(input(f"For how many {user_input}'s do you want to calculate the raid cost for: "))
+        while True:
+            try:
+                quantity = int(input(f"For how many {user_input}'s do you want to calculate the raid cost for: "))
+                break  # Exit the loop if conversion to int succeeds
+            except ValueError:
+                print(f"\nIncorrect input. Please enter a CORRECT amount of {user_input}'s.")
 
         calculate_cost(selected_obstacle, quantity, user_input)
 
@@ -308,8 +327,9 @@ def calculate_cost(selected_obstacle, quantity, user_input):
 
 def calculate():
     while True:
+        mode = mode_selector()
         options()
-        input_gather()
+        input_gather(mode)
 
         another_calculation = input("\n\nWould you like to calculate the raid cost for another obstacle? (Y to continue)").upper()
         if another_calculation != "Y":
