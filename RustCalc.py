@@ -196,10 +196,8 @@ rocket_costs = {
 }
 
 
-
-
-
 # calculator mechanics
+
 
 def options():
     print("\nWooden Wall: WW\n"
@@ -236,15 +234,15 @@ def mode_selector():
         mode = sulfur_costs
 
     return mode
-def input_gather(mode):
 
+
+def input_gather(mode):
     user_input = input("\n\nSelect the obstacle that you want to break using the abbreviation from above: ").upper()
 
-    #validate input
+    # validate input
     valid_input = ["WW", "SW", "SMW", "AW", "WD", "SMD", "GD", "AD", "ADD", "AT", "WB3", "ESW", "EMB", "LH", "EWW"]
     while user_input not in valid_input:
         user_input = input("Incorrect input. Select the obstacle using the CORRECT abbreviation from above: ").upper()
-
 
     selected_obstacle = None
 
@@ -316,13 +314,11 @@ def calculate_cost(selected_obstacle, quantity, user_input):
         # Calculate the total amount of needed items to break the obstacle
         additional_cost = sum(additional_info[item] * quantity for item in additional_info)
 
-
         # Print the result
         print(f"\nRaid cost for {quantity} {user_input}'s is:\n{base_cost} sulfur.")
         print("\nBreakdown of required items:")
         for item, amount in additional_info.items():
             print(f"{amount * quantity} {item}")
-
 
 
 def calculate():
@@ -331,8 +327,10 @@ def calculate():
         options()
         input_gather(mode)
 
-        another_calculation = input("\n\nWould you like to calculate the raid cost for another obstacle? (Y to continue)").upper()
+        another_calculation = input(
+            "\n\nWould you like to calculate the raid cost for another obstacle? (Y to continue)").upper()
         if another_calculation != "Y":
             break
+
 
 calculate()
