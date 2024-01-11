@@ -319,7 +319,7 @@ def calculate_cost(selected_obstacle, quantity, user_input):
         print("\nBreakdown of required items:")
         for item, amount in additional_info.items():
             print(f"{amount * quantity} {item}")
-            print("\nmade by @DinnyOs")
+            print("\nmade by @DinnyOS")
 
 
 def calculate():
